@@ -4,9 +4,11 @@ import com.example.androidmvpexample.Model.Data
 
 class MainPresenter(private val view: MainContract.View): MainContract.Presenter {
 
-    val data = Data()
+    override val data: Data
+        get() = Data()
 
-    override fun getResult(n: Int) {
-        view.showResult(n * data.multiple)
+    override fun login(usrId: String?, usrPasswd: String?) {
+        var loginStatus = data.login(usrId, usrPasswd)
+        view.showResult(loginStatus)
     }
 }
